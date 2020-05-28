@@ -1,0 +1,137 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Battlefield 1942 scripting language",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#statements"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.bf1942-script",
+					"match": "^\\b(?i:rem)\\b.*$"
+				},
+				{
+					"name": "comment.block.bf1942-script",
+					"begin": "^\\b(?i:beginrem)\\b",
+					"end": "^\\b(?i:endrem)\\b.*$"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"include": "#globals"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#numbers"
+				}
+			]
+		},
+		"arrays": {
+			"begin": "\\s*(?=[^\\s\\/]+\\/.+)",
+			"end": "\\s|\\s*$",
+			"patterns": [
+				{
+					"name": "punctuation.separator.vector.bf1942-script",
+					"match": "\\/"
+				},
+				{
+					"include": "#constants"
+				}
+			]
+		},
+		"array-series": {
+			"begin": "\\s*(?=[^\\s]+\\|[^\\s]+)",
+			"end": "\\s|\\s*$",
+			"patterns": [
+				{
+					"name": "punctuation.separator.array-series.bf1942-script",
+					"match": "\\|"
+				},
+				{
+					"include": "#arrays"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.bf1942-script",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.bf1942-script",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.unquoted.bf1942-script",
+					"match": "\\b[a-zA-Z].*\\b"
+				}
+			]
+		},
+		"numbers": {
+			"name": "constant.numeric",
+			"patterns": [
+				{
+					"match": "(?<![\\w\\d.])\\d+(?![pPeE.0-9])",
+					"name": "constant.numeric.integer.bf1942-script"
+				},
+				{
+					"match": "(?<![\\w\\d.])\\d+(\\.\\d+)?([eE]-?\\d*)?",
+					"name": "constant.numeric.float.bf1942-script"
+				}
+			]
+		},
+		"globals": {
+			"patterns": [
+				{
+					"name": "support.constant",
+					"match": "\\bCRD_(NONE|UNIFORM|EXPONENTIAL|NORMAL)\\b"
+				}
+			]
+		},
+		"statements": {
+			"begin": "^\\b([^.]+)\\.([^\\s]+)\\b\\s+",
+			"beginCaptures": {
+				"1": {
+					"name": "support.variable.bf1942-script"
+				},
+				"2": {
+					"name": "support.function.bf1942-script"
+				}
+			},
+			"end": "\\s*$",
+			"patterns": [
+				{
+					"name": "variable.parameter.bf1942-script",
+					"include": "#array-series"
+				},
+				{
+					"name": "variable.parameter.bf1942-script",
+					"include": "#arrays"
+				},
+				{
+					"name": "variable.parameter.bf1942-script",
+					"include": "#constants"
+				},
+				{
+					"match": "\\s+",
+					"name": "punctuation.separator.arguments.bf1942-script"
+				}
+			]
+		}
+	},
+	"scopeName": "source.con"
+}
