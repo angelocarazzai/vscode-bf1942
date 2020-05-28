@@ -2,6 +2,8 @@
     "name": "vscode-bf1942",
     "displayName": "vscode-bf1942",
     "description": "Battlefield 1942 scripting language support (.con files)",
+    "repository": "github:angelocarazzai/vscode-bf1942",
+    "icon": "images/logo.png",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.45.0"
