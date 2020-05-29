@@ -2,9 +2,13 @@
     "name": "vscode-bf1942",
     "displayName": "vscode-bf1942",
     "description": "Battlefield 1942 scripting language support (.con files)",
-    "repository": "github:angelocarazzai/vscode-bf1942",
+    "publisher": "angelocarazzai",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/angelocarazzai/vscode-bf1942"
+    },
     "icon": "images/logo.png",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.45.0"
     },
@@ -12,16 +16,33 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "bf1942-script",
-            "aliases": ["Battlefield 1942 scripting language", "bf1942-script"],
-            "extensions": [".con"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "bf1942-script",
-            "scopeName": "source.con",
-            "path": "./syntaxes/bf1942-script.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "bf1942-script",
+                "aliases": [
+                    "Battlefield 1942 scripting language",
+                    "bf1942-script"
+                ],
+                "extensions": [
+                    ".con"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "bf1942-script",
+                "scopeName": "source.con",
+                "path": "./syntaxes/bf1942-script.tmLanguage.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "@semantic-release/changelog": "5.0.1",
+        "@semantic-release/git": "9.0.0",
+        "@semantic-release/npm": "7.0.5",
+        "@semantic-release/release-notes-generator": "9.0.1",
+        "semantic-release": "17.0.8",
+        "vsce": "1.75.0"
     }
 }
