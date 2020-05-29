@@ -1,0 +1,27 @@
+{
+    "name": "vscode-bf1942",
+    "displayName": "vscode-bf1942",
+    "description": "Battlefield 1942 scripting language support (.con files)",
+    "repository": "github:angelocarazzai/vscode-bf1942",
+    "icon": "images/logo.png",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.45.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "bf1942-script",
+            "aliases": ["Battlefield 1942 scripting language", "bf1942-script"],
+            "extensions": [".con"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "bf1942-script",
+            "scopeName": "source.con",
+            "path": "./syntaxes/bf1942-script.tmLanguage.json"
+        }]
+    }
+}
