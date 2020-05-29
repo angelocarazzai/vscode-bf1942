@@ -2,7 +2,7 @@
 
 This extension provides basic syntax highlighting for Battlefield 1942 scripting files (`.con` extension).
 
-\!\[Example\]\(images/screenshot.png\)
+<img src="images/screenshot.png"/>
 
 ## Known Issues
 
