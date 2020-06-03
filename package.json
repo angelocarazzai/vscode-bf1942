@@ -8,7 +8,7 @@
         "url": "https://github.com/angelocarazzai/vscode-bf1942"
     },
     "icon": "images/logo.png",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "engines": {
         "vscode": "^1.45.0"
     },
