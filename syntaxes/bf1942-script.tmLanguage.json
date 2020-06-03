@@ -36,29 +36,33 @@
 				}
 			]
 		},
-		"arrays": {
-			"begin": "\\s*(?=[^\\s\\/]+\\/.+)",
-			"end": "\\s|\\s*$",
+		"CRD": {
+			"comment": "Continuous Random Distribution",
+			"begin": "\\s*(?=CRD_[^\\s\\/]+\\/)",
+			"end": "\\s|\\||\\s*$",
 			"patterns": [
 				{
-					"name": "punctuation.separator.vector.bf1942-script",
+					"name": "punctuation.separator.crd.bf1942-script",
 					"match": "\\/"
 				},
 				{
-					"include": "#constants"
+					"include": "#globals"
+				},
+				{
+					"include": "#numbers"
 				}
 			]
 		},
-		"array-series": {
-			"begin": "\\s*(?=[^\\s]+\\|[^\\s]+)",
+		"percentage-series": {
+			"begin": "\\s*(!=\\d+(\\.\\d+)?\\/)",
 			"end": "\\s|\\s*$",
 			"patterns": [
 				{
-					"name": "punctuation.separator.array-series.bf1942-script",
-					"match": "\\|"
+					"name": "punctuation.separator.percentage-series.bf1942-script",
+					"match": "\\/|\\|"
 				},
 				{
-					"include": "#arrays"
+					"include": "#numbers"
 				}
 			]
 		},
@@ -77,7 +81,7 @@
 				},
 				{
 					"name": "string.unquoted.bf1942-script",
-					"match": "\\b[a-zA-Z].*\\b"
+					"match": "\\b[a-zA-Z][^\\s]*\\b"
 				}
 			]
 		},
@@ -85,7 +89,7 @@
 			"name": "constant.numeric",
 			"patterns": [
 				{
-					"match": "(?<![\\w\\d.])\\d+(?![pPeE.0-9])",
+					"match": "(?<![\\w\\d.])-?\\d+(?![pPeE.0-9])",
 					"name": "constant.numeric.integer.bf1942-script"
 				},
 				{
@@ -97,7 +101,8 @@
 		"globals": {
 			"patterns": [
 				{
-					"name": "support.constant",
+					"comment": "CRD distribution",
+					"name": "support.constant.crd.bf1942-script",
 					"match": "\\bCRD_(NONE|UNIFORM|EXPONENTIAL|NORMAL)\\b"
 				}
 			]
@@ -116,11 +121,11 @@
 			"patterns": [
 				{
 					"name": "variable.parameter.bf1942-script",
-					"include": "#array-series"
+					"include": "#CRD"
 				},
 				{
 					"name": "variable.parameter.bf1942-script",
-					"include": "#arrays"
+					"include": "#percentage-series"
 				},
 				{
 					"name": "variable.parameter.bf1942-script",
